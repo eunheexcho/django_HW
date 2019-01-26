@@ -17,11 +17,18 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
+from django.shortcuts import redirect
+
+def root(request):
+    return redirect('blog:post_list')
 
 urlpatterns = [
+    path('', root, name='root'),
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
-    path('dojo/', include('dojo.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('blog/', include('blog.urls', namespace='blog')),
+    path('dojo/', include('dojo.urls', namespace='dojo')),
+    path('shop/', include('shop.urls', namespace='shop')),
 ]
 
 if settings.DEBUG:
