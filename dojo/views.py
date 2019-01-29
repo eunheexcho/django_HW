@@ -10,12 +10,14 @@ def post_new(request):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
-            post = Post()
-            post.title = form.cleaned_data['content']
-            post.content = form.cleaned_data['title']
-            post.save()
-            print(form.cleaned_data)
+            post = form.save()
             return redirect('/dojo/')
+            # post = Post()
+            # post.title = form.cleaned_data['content']
+            # post.content = form.cleaned_data['title']
+            # post.save()
+            # print(form.cleaned_data)
+            # return redirect('/dojo/')
     else:
         form = PostForm
     return render(request, 'dojo/post_form.html', {
