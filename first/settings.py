@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'django_extensions',
+    'imagekit',
     'accounts',
     'blog',
     'dojo',
     'shop',
+    'first',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +147,4 @@ from django.contrib.messages import constants
 
 MESSAGE_LEVEL = constants.DEBUG
 MESSAGE_TAGS = {constants.ERROR: 'danger'}
+
