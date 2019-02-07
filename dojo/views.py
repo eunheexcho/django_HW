@@ -7,7 +7,7 @@ from .models import Post
 from .forms import PostForm
 
 
-post_detail = DetailView.as_view(model=Post, pk_url_kwarg='id')
+post_detail = DetailView.as_view(model=Post)
 
 
 def post_new(request):
