@@ -6,6 +6,13 @@ from .models import Post
 from .forms import PostForm
 
 
+def post_detail(request, id):
+    post = get_object_or_404(Post, id=id)
+    return render(request, 'dojo/post_detail.html', {
+        'post': post,
+    })
+
+
 def post_new(request):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
@@ -30,7 +37,7 @@ def post_new(request):
 
 def post_edit(request, id):
     post = get_object_or_404(Post, id=id)
-    
+
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
