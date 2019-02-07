@@ -7,11 +7,11 @@ from . import views
 
 urlpatterns = [
     re_path(r'^signup/$', views.signup, name='signup'),
-    re_path(r'^login/$', auth_views.login, name='login',
+    re_path(r'^login/$', auth_views.LoginView, name='login',
             kwargs={
                 'authentication_form': LoginForm,
                 'template_name': 'accounts/login_form.html'
             }),
-    re_path(r'^logout/$', auth_views.logout, name='logout', kwargs={'next_page': settings.LOGIN_URL}),
+    re_path(r'^logout/$', auth_views.LogoutView, name='logout', kwargs={'next_page': settings.LOGIN_URL}),
     re_path(r'^profile/$', views.profile, name='profile'),
 ]
